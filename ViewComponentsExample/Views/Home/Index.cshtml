@@ -1,0 +1,13 @@
+﻿@model PersonsList
+@{
+    ViewBag.Title = "Home";
+}
+<h1>Home</h1>
+
+
+
+@await Component.InvokeAsync("Grid", new { personsList =Model})
+@* here "Grid" name of ViewComponent Class in ViewComponents folder
+@await is imp coz InvokeAsync is a Async method, so page dont have to wait for 
+complete load of InvokeAsync("Grid"), mean while it can process other request as well
+ *@

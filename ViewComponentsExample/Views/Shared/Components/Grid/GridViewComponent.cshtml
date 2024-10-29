@@ -1,0 +1,68 @@
+﻿@model PersonsList 
+<div class="box">
+    <h3>Grid</h3>
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>Sl. No</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td>One</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Two</td>
+        </tr>
+    </table>
+</div>
+
+@* Using ViewBag in GridViewComponent*@
+<div class="box">
+    <h3>@ViewBag.Grid.Title</h3>
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Job Title</th>
+            </tr>
+        </thead>
+        @foreach (Person item in ViewBag.Grid.persons)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.JobTitle</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@* Using Model in GridViewComponent*@
+<div class="box">
+    <h3>@Model.Title</h3>
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Job Title</th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            if (Model.persons != null)
+            {
+                foreach (Person item in Model.persons)
+                {
+                    <tr>
+                        <td>@item?.Name</td>
+                        <td>@item?.JobTitle</td>
+                    </tr>
+                }
+            }
+        }
+
+    </table>
+</div>
